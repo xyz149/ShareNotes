@@ -32,7 +32,11 @@ const UploadNotes = () => {
         setFile(null);
         getPDF();
       }
-    } catch (error) {
+      else {
+        alert('Upload failed: ' + result.data.message);
+      } 
+    }
+    catch (error) {
       console.error("Error uploading file :", error);
     }
   };
@@ -42,14 +46,26 @@ const UploadNotes = () => {
   }, []);
 
   const getPDF = async () => {
-    const result = await axios.get("https://sharenotes-quoo.onrender.com/get-files");
-    console.log(result.data.data);
-    setAllFiles(result.data.data);  // This will now work correctly
+    try {
+      const result = await axios.get("https://sharenotes-quoo.onrender.com/get-files");
+      if (result.data.status === "OK") {
+        setAllFiles(result.data.data);  // This will now work correctly
+      } else {
+        console.error('Failed to fetch files:', result.data.message);
+        alert('Failed to load files. Please try again.');
+      }
+    } catch (error) {
+      console.error("Error fetching files:", error);
+      alert('Error fetching files. Please check your network connection.');
+    }
   };
 
+
   const showPDF = (pdf: string) => {
-    window.open(`https://sharenotes-quoo.onrender.com/files/${pdf}`, "_blank");
+    const pdfUrl = `https://sharenotes-quoo.onrender.com/files/${pdf}`;
+    window.open(pdfUrl, "_blank");
   };
+
 
   return (
     <div className="container py-5">
