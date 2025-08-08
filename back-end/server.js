@@ -49,7 +49,8 @@ app.get("/get-files", async(req,res)=>{
             res.send({status:"OK",data:data});
         });
     } catch (error) {
-        
+        console.error('Error fetching files:', error);
+        res.status(500).send({ status: "Error", message: "Could not fetch files" });
     }
 })
 app.get("/", async (req,res)=>{
