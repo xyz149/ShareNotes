@@ -47,7 +47,7 @@ const UploadNotes = () => {
 
   const getPDF = async () => {
     try {
-      const result = await axios.get("https://sharenotes-quoo.onrender.com/get-files");
+      const result = await axios.get("https://sharenotesbackend.onrender.com/get-files");
       if (result.data.status === "OK") {
         setAllFiles(result.data.data);  // This will now work correctly
       } else {
