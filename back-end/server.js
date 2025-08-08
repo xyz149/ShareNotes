@@ -33,6 +33,9 @@ const notes = mongoose.model("notes");
 const upload = multer({ storage: storage });
 app.post("/upload",upload.single("file") ,async(req,res)=>{
     console.log(req.file);
+    if (!req.file) {
+      return res.status(400).json({ status: "Error", message: "No file uploaded" });
+    }
     const title=req.body.title;
     const fileName=req.file.filename;
     try{
