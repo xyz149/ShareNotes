@@ -12,9 +12,7 @@ import "./models/notes-model.js";
 const app=express();
 
 dotenv.config();
-app.use(cors({origin: 'https://share-notes-ijw7.vercel.app/',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],}));
+app.use(cors());
 app.use("/files",express.static("files"));
 
 //Upload Part
