@@ -22,7 +22,7 @@ const UploadNotes = () => {
     formData.append("file", file);
     console.log(title, file);
     try {
-      const result = await axios.post("https://sharenotes-quoo.onrender.com/upload", formData, {
+      const result = await axios.post("https://sharenotesbackend.onrender.com/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log(result);
@@ -62,7 +62,7 @@ const UploadNotes = () => {
 
 
   const showPDF = (pdf: string) => {
-    const pdfUrl = `https://sharenotes-quoo.onrender.com/files/${pdf}`;
+    const pdfUrl = `https://sharenotesbackend.onrender.com/files/${pdf}`;
     window.open(pdfUrl, "_blank");
   };
 
