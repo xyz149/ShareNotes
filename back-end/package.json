@@ -1,7 +1,7 @@
 {
   "name": "back-end",
   "version": "1.0.0",
-  "description": "Music Backend API",
+  "description": "Notes Sharing App API",
   "main": "server.js",
   "type": "module",
   "scripts": {
