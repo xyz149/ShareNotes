@@ -65,7 +65,7 @@ app.use(Error404)
 
 const promise=createConneciton();
 promise.then(()=>{
-    const serevr = app.listen(8888,(err)=>{
+    const serevr = app.listen(process.env.PORT || 8888,(err)=>{
         if(err){
             console.log(chalk.redBright.bold('Server Crashed',err));
         }
