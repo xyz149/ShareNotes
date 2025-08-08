@@ -22,7 +22,7 @@ const UploadNotes = () => {
     formData.append("file", file);
     console.log(title, file);
     try {
-      const result = await axios.post("http://localhost:8888/upload", formData, {
+      const result = await axios.post("https://sharenotes-quoo.onrender.com/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log(result);
@@ -42,13 +42,13 @@ const UploadNotes = () => {
   }, []);
 
   const getPDF = async () => {
-    const result = await axios.get("http://localhost:8888/get-files");
+    const result = await axios.get("https://sharenotes-quoo.onrender.com/get-files");
     console.log(result.data.data);
     setAllFiles(result.data.data);  // This will now work correctly
   };
 
   const showPDF = (pdf: string) => {
-    window.open(`http://localhost:8888/files/${pdf}`, "_blank");
+    window.open(`https://sharenotes-quoo.onrender.com/files/${pdf}`, "_blank");
   };
 
   return (
